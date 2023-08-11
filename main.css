@@ -27,3 +27,7 @@
 .show {
     display:block;
 }
+.main-bg {
+    padding:100px 20px;
+    background: lightgrey;
+}
