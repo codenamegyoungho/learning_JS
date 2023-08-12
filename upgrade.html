@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+
+    <script>
+        function 삼육구게임(num) {
+            const num_str = num.toString();
+            const last_digit = num_str[num_str.length - 1]
+            if (last_digit ==3 || last_digit == 6 || last_digit == 9) {
+                console.log('짝')
+            } else {
+                console.log('통과')
+            }
+        }
+        삼육구게임(3);
+        
+        function 합격했냐(개론,민법) {
+            var 개론점수 = 개론 
+            var 민법점수 = 민법
+            if (개론점수>100 || 민법점수 >100) {
+                alert('장난치지마세여')
+            } else if (개론점수 < 0 || 민법점수 < 0) {
+                alert('장난치지마세여')
+            }
+            
+
+
+            if (개론점수>= 40 && 민법점수 >= 40) {
+                if (개론점수 + 민법점수 >=120) {
+                    console.log('과락없이 합격입니다.')
+                }
+                else {
+                    console.log('120점을 못넘겨 불합격입니다.')
+                }
+            } else {
+                console.log('과락으로인하여 불합격입니다.')
+            }
+        }
+        합격했냐(50,50);
+    </script>
+</body>
+</html>
