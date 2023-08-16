@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="main.css">
   </head>
   <body class = '', id = 'body'>
-    
+    <div class="alert alert-danger">
+        5초 이내 구매시 사은품 증정
+      </div>
 
 
 
@@ -58,8 +60,27 @@
             <!-- <button class = 'modal-btn' id = 'login'>로그인</button> -->
             <button type="button" class="btn btn-danger" id = 'login'>로그인</button>
         </div>
-        
-
+    <div style = 'overflow: hidden;'>  
+        <div class = 'slide-container'>
+            <div class = 'slide-box'>
+                <img src="car1.png" alt="">
+            </div>
+            <div class = 'slide-box'>
+                <img src="car2.png" alt="">
+            </div>
+            <div class = 'slide-box'>
+                <img src="car3.png" alt="">
+            </div>
+            <div class="slide-box">
+                <img src="js.jpeg" alt="">
+            </div>
+        </div>
+    </div>  
+    <button class="slide-1">1</button>
+    <button class="slide-2">2</button>
+    <button class="slide-3">3</button>
+    <button class="next">next</button>
+    <button class="behind">behind</button>
         <script>
             document.querySelector('.navbar-toggler').addEventListener('click',function(){
                 document.querySelectorAll('.list-group')[0].classList.toggle('show');
@@ -85,10 +106,13 @@
                 event.preventDefault();
                 alert('아이디와 비밀번호를 입력하세요.');
             }
-            if (pwinput.val().length < 6){
+            if (/\S+@\S+\.\S+/.test(idinput.val())==false){
                 event.preventDefault();
-                alert('비번 6자이상 ㄱㄱ');
-
+                alert('이메일형식으로 적어주세요.')
+            }
+            if (pwinput.val().length < 6 || /[A-Z]/.test(pwinput.val())==false){
+                event.preventDefault();
+                alert('비번 6자이상 ㄱㄱ or 대문자한개이상 ㄱㄱ');
             }
         });
         $('#idinput').on('click',function(){
@@ -107,6 +131,52 @@
                 $('#body').removeClass('dark')
                 $('.navbar').removeClass('navbar-dark bg-dark').addClass('navbar-light bg-light')
             }
+        })
+        var 시간 = 5;
+        setInterval(function(){
+            시간 -= 1;
+            $('.alert').html( + 시간 +'초 이내 구매시 사은품 증정!');
+            if (시간<=0){
+                $('.alert').hide();
+            }
+        },1000)
+
+        
+        $(document).ready(function(){
+            var 이미지개수 = 4;
+            var 이미지width = 이미지개수*100
+            $('.slide-container').css('width',+이미지width+'vw')
+            $('.slide-container').css('transform', 'translateX(0vw)');
+            var currentPosition = 0;
+            $('.next').on('click',function(){
+                currentPosition -= 100;
+                if (currentPosition < (-이미지width+100)) {
+                    currentPosition = 0;
+                }
+                $('.slide-container').css('transform','translateX('+ currentPosition + 'vw)');
+            
+            });
+            currentPosition = -이미지width+100;
+            $('.behind').on('click',function(){
+                currentPosition += 100;
+                if (currentPosition > 0) {
+                    currentPosition = -이미지width+100;
+                }
+                $('.slide-container').css('transform','translateX('+ currentPosition + 'vw)');
+            
+            });
+        $('.slide-1').on('click',function(){
+            currentPosition = 0;
+            $('.slide-container').css('transform','translateX('+currentPosition+'vw)');
+        })
+        $('.slide-2').on('click',function(){
+            currentPosition = -100;
+            $('.slide-container').css('transform','translateX('+currentPosition+'vw)');
+        })
+        $('.slide-3').on('click',function(){
+            currentPosition = -200;
+            $('.slide-container').css('transform','translateX('+currentPosition+'vw)');
+        })
         })
         
 
