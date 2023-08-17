@@ -8,26 +8,23 @@
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <p>태조 이성계가 태어난 년도는?</p>
-    <input type="text" id="answer">
-    <button id="send-answer">제출</button>
+    
     
 
     <script>
-        const 정답 = 1335;
-        var count = 0;
-        $('#send-answer').on('click',function(){
-            적은답 = $('#answer').val();
-            if (정답 == parseInt(적은답)) {
-                console.log('정답입니다.')
-                count = 0
-            } else if (count >= 2) {
-                alert('멍청이')
-            } else if (정답 != 적은답) {
-                count += 1;
-                console.log(count); 
+        function 시간변환기(분,초) {
+            var ms = 분 * 60* 1000 + 초 * 1000;
+            return ms ;
+        }
+        console.log(시간변환기(2,10))
+        function 가격할인기(가격,구매횟수) {
+            var 할인된가격 = parseFloat((가격*0.9).toFixed(2));
+            if (구매횟수 == true) {
+                할인된가격 -= 1.5;
             }
-        })
+            return 할인된가격
+        }
+        console.log(가격할인기(10,true))
     </script>
 </body>
 </html>

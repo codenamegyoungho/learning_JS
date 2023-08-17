@@ -81,6 +81,17 @@
     <button class="slide-3">3</button>
     <button class="next">next</button>
     <button class="behind">behind</button>
+
+    <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptas voluptatum minus praesentium fugit debitis at, laborum ipsa itaque placeat sit, excepturi eius. Nostrum perspiciatis, eligendi quae consectetur praesentium exercitationem.
+      </div> 
+
+
+
+    <div style="height: 1000px;"></div>
+
+
+
         <script>
             document.querySelector('.navbar-toggler').addEventListener('click',function(){
                 document.querySelectorAll('.list-group')[0].classList.toggle('show');
@@ -179,7 +190,22 @@
         })
         })
         
-
+        window.addEventListener('scroll',function(){
+            var 스크롤양 = window.scrollY;
+            if (스크롤양 >= 500){
+                $('.navbar-brand').css('font-size','30px')
+            } else if (스크롤양 < 500) {
+                $('.navbar-brand').css('font-size','45px')
+            }
+        })
+        $('.lorem').on('scroll',function(){
+            var 스크롤양1 = $('.lorem').scrollTop();
+            var div크기 = $('.lorem').prop('scrollHeight');
+            console.log(스크롤양1,div크기);
+            if (스크롤양1 + 100 == div크기) {
+                alert('다읽음요')
+            }
+        })
         
         
     </script>
